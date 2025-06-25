@@ -1,0 +1,20 @@
+# PlatformIO
+.pio/
+.PlatformIO/
+.vscode/
+
+# Build
+*.o
+*.a
+*.bin
+*.elf
+*.map
+
+# IDE and OS
+.DS_Store
+*.swp
+*.swo
+*~
+
+.venv/
+.env/
