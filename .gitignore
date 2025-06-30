@@ -1,6 +1,8 @@
+# VS Code
 .vscode/
 
 # Build
+build/
 *.o
 *.a
 *.bin
@@ -15,7 +17,7 @@
 
 .venv/
 .env/
+__pycache__/
 
-build/
-sdkconfig
+sdkconfig.*~
 sdkconfig.old
