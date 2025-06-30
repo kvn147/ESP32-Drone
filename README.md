@@ -12,11 +12,13 @@ Design and build a fully open-source quadcopter drone from scratch using an ESP3
 - [ ] Research Articles and Videos.
 - [ ] Gather Electronic Components (ESP32, MPU6050, LEDS).
 - [ ] 3D Print Drone Quad Frame.
+- [ ] Set up ESP IDF Project
+- [ ] Interface MPU6050 with microcontroller.
 
 ### Resources
 - Electronics: ESP32-WROOM, MPU6050, Motors, Propellers, Batteries, LEDS.
 - Tools: Bambu Lab P1S 3D Printer, Soldering, RC transmitter/receiver (?).
-- Software: VS Code, Platform IO (VS Code Extension), CAD (AutoCAD?), GitHub.
+- Software: VS Code, ESP-IDF Extension, CAD (Fusion), GitHub.
 
 #### Meeting Agenda (06/25):
 1. Gathering external components.
