@@ -3,14 +3,32 @@
 ### Objective
 Design and build a fully open-source quadcopter drone from scratch using an ESP32-WROOM microcontroller.
 
-## Getting Start
-**Prequisites**
+## Getting Started
+**Prerequisites**
 - ESP32 dev board
 - MPU6050 module
+
+**Option 1: Using Dev Container (Recommended)**
+- Docker Desktop
+- VS Code with Dev Containers extension
+- ESP-IDF VS Code extension (auto-installed in container)
+
+**Option 2: Local Development**
 - Up-to-date ESP-IDF framework (v5.4+)
-- ESP-IDF extension
+- ESP-IDF VS Code extension
 
 **Clone and build project**
+
+Using Dev Container:
+```bash
+git clone https://github.com/kvn147/ESP32-Drone.git
+cd ESP32-Drone
+# Open in VS Code and select "Reopen in Container" when prompted
+# or use Command Palette: "Dev Containers: Reopen in Container"
+idf.py build
+```
+
+Local development:
 ```bash
 git clone https://github.com/kvn147/ESP32-Drone.git
 idf.py build

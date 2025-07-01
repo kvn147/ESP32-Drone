@@ -1,5 +1,5 @@
 {
-	"name": "ESP-IDF QEMU",
+	"name": "ESP32-Drone Development",
 	"build": {
 		"dockerfile": "Dockerfile"
 	},
@@ -9,13 +9,32 @@
 				"terminal.integrated.defaultProfile.linux": "bash",
 				"idf.espIdfPath": "/opt/esp/idf",
 				"idf.toolsPath": "/opt/esp",
-				"idf.gitPath": "/usr/bin/git"
+				"idf.gitPath": "/usr/bin/git",
+				"idf.buildPath": "${workspaceFolder}/build",
+				"C_Cpp.default.compilerPath": "/opt/esp/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/bin/xtensa-esp32-elf-gcc",
+				"C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json"
 			},
 			"extensions": [
 				"espressif.esp-idf-extension",
-				"espressif.esp-idf-web"
+				"espressif.esp-idf-web",
+				"ms-vscode.cpptools",
+				"ms-vscode.cmake-tools"
 			]
 		}
 	},
-	"runArgs": ["--privileged"]
+	"forwardPorts": [3333, 4444, 5555],
+	"portsAttributes": {
+		"3333": {
+			"label": "GDB Server",
+			"onAutoForward": "silent"
+		}
+	},
+	"mounts": [
+		"source=/dev,target=/dev,type=bind,consistency=cached"
+	],
+	"runArgs": [
+		"--privileged",
+		"--device-cgroup-rule=c 166:* rmw"
+	],
+	"postCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}"
 }
