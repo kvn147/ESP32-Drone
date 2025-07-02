@@ -12,7 +12,10 @@
 				"idf.gitPath": "/usr/bin/git",
 				"idf.buildPath": "${workspaceFolder}/build",
 				"C_Cpp.default.compilerPath": "/opt/esp/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/bin/xtensa-esp32-elf-gcc",
-				"C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json"
+				"C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json",
+				"cmake.environment": {
+					"IDF_PATH": "/opt/esp/idf"
+				}
 			},
 			"extensions": [
 				"espressif.esp-idf-extension",
