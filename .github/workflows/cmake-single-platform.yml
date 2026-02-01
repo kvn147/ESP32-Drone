@@ -1,2 +1,24 @@
-- name: Espressif IoT Development Framework (ESP-IDF)
-  uses: espressif/esp-idf-ci-action@v1.2.0
+name: ESP-IDF Build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: true
+    
+    - name: Setup ESP-IDF and Build
+      uses: espressif/esp-idf-ci-action@v1.2.0
+      with:
+        esp_idf_version: v5.4.2
+        target: esp32
+        path: '.'
+  

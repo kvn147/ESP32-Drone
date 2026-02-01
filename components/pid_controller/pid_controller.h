@@ -5,7 +5,7 @@
 #ifndef PID_CONTROLLER_H
 #define PID_CONTROLLER_H
 
-#include <cstdint>
+#include <stdint.h>
 
 typedef struct {
     float kp, ki, kd; // PID coefficients

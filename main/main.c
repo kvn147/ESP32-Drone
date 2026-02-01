@@ -19,7 +19,9 @@ void app_main(void) {
   QueueHandle_t imu_queue = xQueueCreate(10, sizeof(mpu6050_scaled_data_t));
 
   // Tasks
+  /*
   xTaskCreate(imu_task, "IMU", 4096, &estimator, 5, NULL);
   xTaskCreate(attitude_task, "Attitude", 4096, &estimator, 5, NULL);
   xTaskCreate(control_task, "Control", 4096, &pids, 5, NULL);
+  */
 }

@@ -4,8 +4,8 @@
 #ifndef ATTITUDE_ESTIMATION_H
 #define ATTITUDE_ESTIMATION_H
 
-#include <cstdint>
-#include <cmath>
+#include <stdint.h>
+#include <math.h>
 
 typedef struct {
     float roll;
