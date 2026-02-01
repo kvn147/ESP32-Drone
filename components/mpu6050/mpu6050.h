@@ -28,6 +28,10 @@
 #define MPU6050_PWR_MGMT_1 0x6B // power modes and clock source
 #define MPU6050_WHO_AM_I 0x75
 
+#define CONFIG 0x1A
+#define MPU6050_ACCEL_CONFIG 0x1C
+#define MPU6050_GYRO_CONFIG 0x1B
+
 typedef struct {
     int16_t gyroX;
     int16_t gyroY;
@@ -36,6 +40,21 @@ typedef struct {
     int16_t accelY;
     int16_t accelZ;
 } mpu6050_data_t;
+
+typedef struct {
+    float accel_scale;
+    float gyro_scale;
+} mpu6050_scale_t;
+
+typedef struct {
+    int16_t accel_offset[3];
+    int16_t gyro_offset[3];
+} mpu6050_calibration_t;
+
+typedef struct {
+    float gyro_x, gyro_y, gyro_z;
+    float accel_x, accel_y, accel_z;
+} mpu6050_scaled_data_t;
 
 #ifdef __cplusplus
 extern "C" {
@@ -94,6 +113,30 @@ esp_err_t mpu6050_read_accel(int16_t *accelX, int16_t *accelY, int16_t *accelZ);
  * @return ESP_OK on success (1), or error code on failure (0).
  */
 esp_err_t mpu6050_read_gyro(int16_t *gyroX, int16_t *gyroY, int16_t *gyroZ);
+
+/*
+ * @brief Configures the MPU6050 sensor with specified accelerometer and gyroscope ranges.
+ * @param accel_range Accelerometer range setting.
+ * @param gyro_range Gyroscope range setting.
+ * @return ESP_OK on success (1), or error code on failure (0).
+ */
+esp_err_t mpu6050_configure(uint8_t accel_range, uint8_t gyro_range);
+
+/*
+ * @brief Calibrates the MPU6050 sensor to determine offsets for accelerometer and gyroscope.
+ * @param offsets Pointer to mpu6050_calibration_t structure to store the calculated offsets.
+ * @param samples Number of samples to use for calibration.
+ * @return ESP_OK on success (1), or error code on failure (0). 
+ */
+esp_err_t mpu6050_calibrate(mpu6050_calibration_t *offsets, uint16_t samples);
+
+/*
+ * @brief Applies scale factors and offsets to raw sensor data to obtain scaled values.
+ * @param data Pointer to mpu6050_scaled_data_t structure to store the scaled data.
+ * @param offsets Pointer to mpu6050_calibration_t structure containing offsets.
+ * @return ESP_OK on success (1), or error code on failure (0).
+ */
+esp_err_t mpu6050_get_scale_factors(mpu6050_scaled_data_t *data, const mpu6050_calibration_t *offsets);
 
 #ifdef __cplusplus
 }
